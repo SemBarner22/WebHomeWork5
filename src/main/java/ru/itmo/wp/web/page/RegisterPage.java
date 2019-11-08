@@ -1,7 +1,6 @@
 package ru.itmo.wp.web.page;
 
 import ru.itmo.wp.model.domain.Event;
-import ru.itmo.wp.model.domain.Status;
 import ru.itmo.wp.model.domain.User;
 import ru.itmo.wp.model.exception.ValidationException;
 import ru.itmo.wp.model.service.EventService;
@@ -31,13 +30,14 @@ public class RegisterPage extends AbstractPage {
         userService.register(user, password);
 
         Event event = new Event();
-        event.setType(Status.LOGOUT);
+        event.setType(Event.Status.LOGOUT);
         event.setUserId(user.getId());
         eventService.save(event);
 
         request.getSession().setAttribute("message", "You are successfully registered!");
         throw new RedirectException("/index");
     }
+
     @Override
     public void before(HttpServletRequest request, Map<String, Object> view) {
         super.before(request, view);

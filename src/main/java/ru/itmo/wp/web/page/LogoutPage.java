@@ -1,10 +1,8 @@
 package ru.itmo.wp.web.page;
 
-import ru.itmo.wp.model.domain.Status;
+import ru.itmo.wp.model.domain.Event;
 import ru.itmo.wp.model.domain.User;
-import ru.itmo.wp.model.exception.ValidationException;
 import ru.itmo.wp.model.service.EventService;
-import ru.itmo.wp.model.service.UserService;
 import ru.itmo.wp.web.exception.RedirectException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,7 +21,7 @@ public class LogoutPage extends AbstractPage {
         User user = (User) request.getSession().getAttribute("user");
         //User user = (User) request.getAttribute("user");
 
-        eventService.changeStatus(Status.LOGOUT, user.getId());
+        eventService.changeStatus(Event.Status.LOGOUT, user.getId());
 
         request.getSession().removeAttribute("user");
 

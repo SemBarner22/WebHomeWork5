@@ -128,7 +128,7 @@ public class FrontServlet extends HttpServlet {
         Method method = null;
         for (Class<?> clazz = pageClass; method == null && clazz != null; clazz = clazz.getSuperclass()) {
             try {
-                Method methods[] = clazz.getDeclaredMethods();
+                Method[] methods = clazz.getDeclaredMethods();
                 for (Method m : methods) {
                     if (m.getName().equals(route.getAction())) {
                         arguments = m.getParameterTypes();
@@ -163,7 +163,7 @@ public class FrontServlet extends HttpServlet {
 
         try {
             method.setAccessible(true);
-            Object objects[] = new Object[arguments.length];
+            Object[] objects = new Object[arguments.length];
             if (arguments.length > 2) {
                 throw new ServletException("Wrong amount of parameters");
             }

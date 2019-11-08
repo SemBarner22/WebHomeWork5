@@ -2,7 +2,6 @@ package ru.itmo.wp.model.repository.impl;
 
 import ru.itmo.wp.model.database.DatabaseUtils;
 import ru.itmo.wp.model.domain.Event;
-import ru.itmo.wp.model.domain.Status;
 import ru.itmo.wp.model.exception.RepositoryException;
 import ru.itmo.wp.model.repository.EventRepository;
 
@@ -36,7 +35,7 @@ public class EventRepositoryImpl implements EventRepository {
     }
 
     @Override
-    public void changeStatus(Status status, long userId) {
+    public void changeStatus(Event.Status status, long userId) {
         try (Connection connection = DATA_SOURCE.getConnection()) {
             try (PreparedStatement statement = connection.prepareStatement("UPDATE Event SET type=? WHERE userId=?")) {
                 statement.setString(1, status.name());
@@ -81,7 +80,7 @@ public class EventRepositoryImpl implements EventRepository {
                     break;
                 case "type":
                     //event.setType(event.getType());
-                    event.setType(Enum.valueOf(Status.class, resultSet.getString(i)));
+                    event.setType(Enum.valueOf(Event.Status.class, resultSet.getString(i)));
                     break;
                 case "creationTime":
                     event.setCreationTime(resultSet.getTimestamp(i));

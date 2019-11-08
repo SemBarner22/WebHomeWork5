@@ -18,13 +18,22 @@ public abstract class AbstractPage {
         }
     }
 
-    public User getUser(Map<String, Object> view) {
+    public User getUser() {
         User user = (User) request.getSession().getAttribute("user");
         return user;
     }
 
-    public void setMessage(Map<String, Object> view) {
+    public void getMessage(Map<String, Object> view) {
         String message = (String) request.getSession().getAttribute("message");
+        if (!Strings.isNullOrEmpty(message)) {
+            view.put("message", message);
+            request.getSession().removeAttribute("message");
+        }
+    }
+
+    public void setMessage(Map<String, Object> view, String message) {
+        request.getSession().setAttribute("message", message);
+        //String message = (String) request.getSession().getAttribute("message");
         if (!Strings.isNullOrEmpty(message)) {
             view.put("message", message);
             request.getSession().removeAttribute("message");
@@ -33,11 +42,11 @@ public abstract class AbstractPage {
 
     public void before(HttpServletRequest request, Map<String, Object> view) {
         this.request = request;
-        setMessage(view);
+        getMessage(view);
         setUser(view);
         view.put("userCount", userService.findCount());
-
     }
+
     public void after(HttpServletRequest request, Map<String, Object> view) {
 
     }

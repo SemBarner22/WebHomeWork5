@@ -1,7 +1,6 @@
 package ru.itmo.wp.web.page;
 
 import ru.itmo.wp.model.domain.Event;
-import ru.itmo.wp.model.domain.Status;
 import ru.itmo.wp.model.domain.User;
 import ru.itmo.wp.model.exception.ValidationException;
 import ru.itmo.wp.model.service.EventService;
@@ -26,7 +25,7 @@ public class EnterPage extends AbstractPage {
 
         User user = userService.validateAndFindByLoginOrEmailAndPassword(loginOrEmail, password);
 
-        eventService.changeStatus(Status.ENTER, user.getId());
+        eventService.changeStatus(Event.Status.ENTER, user.getId());
 
         request.getSession().setAttribute("user", user);
         request.getSession().setAttribute("message", "Hello, " + user.getLogin());

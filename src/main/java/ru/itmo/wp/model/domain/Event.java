@@ -40,4 +40,8 @@ public class Event implements Serializable {
     public void setCreationTime(Date creationTime) {
         this.creationTime = creationTime;
     }
+
+    public enum Status {
+        LOGOUT, ENTER;
+    }
 }

@@ -35,8 +35,9 @@
     width: 100%;
 }
 
+
 .form-box .button-field {
-    margin: 1.5rem 1.5rem 1.5rem 12rem;
+    margin: 1.5rem 1.5rem 1.5rem 13.5rem;
 }
 
 .form-box .button-field input {
@@ -46,5 +47,9 @@
 .form-box .error {
     color: var(--error-color);
     font-size: 0.75rem;
-    margin-left: 12rem;
+    margin-left: 13.5rem;
+}
+
+.form-box {
+    margin-bottom: 2rem;
 }
