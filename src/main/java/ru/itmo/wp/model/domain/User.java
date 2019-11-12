@@ -1,9 +1,8 @@
 package ru.itmo.wp.model.domain;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class User implements Serializable {
+public class User implements Entity {
     private long id;
     private String login;
     private String email;

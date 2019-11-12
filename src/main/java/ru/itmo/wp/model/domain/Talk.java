@@ -1,9 +1,8 @@
 package ru.itmo.wp.model.domain;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class Talk implements Serializable {
+public class Talk implements Entity {
     private long id;
     private long sourceUserId;
     private long targetUserId;

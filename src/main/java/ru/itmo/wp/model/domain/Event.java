@@ -1,9 +1,8 @@
 package ru.itmo.wp.model.domain;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class Event implements Serializable {
+public class Event implements Entity {
     private long id;
     private long userId;
     private Status type;
@@ -16,6 +15,7 @@ public class Event implements Serializable {
     public void setId(long id) {
         this.id = id;
     }
+
 
     public long getUserId() {
         return userId;
